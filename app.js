@@ -95,29 +95,28 @@ function loadProductos() {
   for (btn of btnCarrito) {
     btn.addEventListener("click", function () {
       let productoSeleccionado = productos[this.id];
+      let nuevoItem = new Producto(productoSeleccionado, 1);
       carrito.push(productoSeleccionado);
-      console.log(productoSeleccionado);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      agregarAlCarrito(nuevoItem);
     });
   }
 }
 
-const infCarrito = document.getElementById("exampleModal");
-const infoCarrito = document.getElementById("modalCarrito");
+const infoCarrito = document.getElementById("modalCar");
 
 infoCarrito.addEventListener("click", agregarAlCarrito);
-infCarrito.addEventListener("click", agregarAlModal);
 
-console.log(infoCarrito);
-console.log(infCarrito);
+console.log(carrito);
 
 function agregarAlCarrito(carrito) {
-  modalBody.innerHtml = "";
+  modalBody.innerHTML = "";
 
   let subtotal = 0;
   let total = 0;
   let cantidadTotal = 0;
 
-  carrito.foreach((producto) => {
+  carrito.forEach((producto) => {
     const modalCar = document.createElement("div");
     modalCar.className = "modal-body";
 
