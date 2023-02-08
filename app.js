@@ -39,6 +39,7 @@ productos.push(
 );
 
 const contenedorProductos = document.getElementById("contenedorProductos");
+const modalBody = document.getElementById("modalCar");
 
 window.addEventListener("load", loadProductos);
 
@@ -95,17 +96,14 @@ function loadProductos() {
   for (btn of btnCarrito) {
     btn.addEventListener("click", function () {
       let productoSeleccionado = productos[this.id];
-      let nuevoItem = new Producto(productoSeleccionado, 1);
       carrito.push(productoSeleccionado);
       localStorage.setItem("carrito", JSON.stringify(carrito));
-      agregarAlCarrito(nuevoItem);
+      agregarAlCarrito(carrito);
     });
   }
 }
 
-const infoCarrito = document.getElementById("modalCar");
-
-infoCarrito.addEventListener("click", agregarAlCarrito);
+modalBody.addEventListener("click", agregarAlCarrito);
 
 console.log(carrito);
 
@@ -117,9 +115,6 @@ function agregarAlCarrito(carrito) {
   let cantidadTotal = 0;
 
   carrito.forEach((producto) => {
-    const modalCar = document.createElement("div");
-    modalCar.className = "modal-body";
-
     const img = document.createElement("img");
     img.src = producto.imagen;
     img.className = "card-image";
@@ -129,52 +124,17 @@ function agregarAlCarrito(carrito) {
 
     const h4 = document.createElement("h4");
     h4.className = "name";
-    h4.innerText = carrito.nombre;
+    h4.innerText = producto.nombre;
 
     const p = document.createElement("p");
     p.className = "description";
-    p.innerText = "$" + carrito.precio + " COP";
+    p.innerText = "$" + producto.precio + " COP";
 
-    img.appendChild(img);
+    modalBody.appendChild(img);
 
     cardContent.appendChild(h4);
     cardContent.appendChild(p);
 
-    modalCar.appendChild(cardContent);
-
-    infoCarrito.appendChild(modalCar);
-  });
-}
-
-function agregarAlModal(carrito) {
-  /*   modalContent.innerHtml = ""; */
-
-  carrito.foreach((carrito) => {
-    const modalCar = document.createElement("div");
-    modalCar.className = "modal-body";
-
-    const img = document.createElement("img");
-    img.src = producto.imagen;
-    img.className = "card-image";
-
-    const cardContent = document.createElement("div");
-    cardContent.className = "card-content";
-
-    const h4 = document.createElement("h4");
-    h4.className = "name";
-    h4.innerText = carrito.nombre;
-
-    const p = document.createElement("p");
-    p.className = "description";
-    p.innerText = "$" + carrito.precio + " COP";
-
-    img.appendChild(img);
-
-    cardContent.appendChild(h4);
-    cardContent.appendChild(p);
-
-    modalCar.appendChild(cardContent);
-
-    infoCarrito.appendChild(modalCar);
+    modalBody.appendChild(cardContent);
   });
 }
