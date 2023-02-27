@@ -11,18 +11,18 @@
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
 
     <!-- FONTAWESOME -->
-    <!--     <link
+    <link
       rel="stylesheet"
       href="https://kit.fontawesome.com/06fdbda69d.css"
       crossorigin="anonymous"
-    /> -->
+    />
 
     <!-- Swiper CSS -->
 
@@ -140,6 +140,19 @@
         </div>
       </section>
 
+      <!-- Loader -->
+
+      <h3 id="loaderTexto" class="text-secondary text-center">
+        Cargando Productos...
+      </h3>
+      <div id="loader" class="d-flex justify-content-center">
+        <div class="spinner-border text-secondary" role="status">
+          <span class="visually-hidden"></span>
+        </div>
+      </div>
+
+      <!-- Modal -->
+
       <div
         class="modal fade"
         id="exampleModal"
@@ -151,7 +164,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">
-                Carrito Compras
+                Carrito de Compras
               </h1>
               <button
                 type="button"
@@ -161,16 +174,23 @@
               ></button>
             </div>
             <div id="modalCar" class="modal-body"></div>
+            <div class="p-2">
+              <p id="precioTotal"></p>
+            </div>
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-warning"
                 data-bs-dismiss="modal"
               >
-                Close
+                Cerrar
               </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
+              <button
+                type="button"
+                class="btn btn-success"
+                id="botonFinalizarCompra"
+              >
+                Confirmar Compra
               </button>
             </div>
           </div>
@@ -206,19 +226,19 @@
     ></script>
 
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
       crossorigin="anonymous"
     ></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src=" https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js "></script>
 
-    <script src="./productos.js"></script>
+    <script src="productos.js"></script>
 
-    <script src="./app.js"></script>
+    <script src="app.js"></script>
 
-    <script src="./carrito.js"></script>
-
-    <!--     <script src="sweetalert2.all.min.js"></script> -->
+    <script src="carrito.js"></script>
   </body>
 </html>
