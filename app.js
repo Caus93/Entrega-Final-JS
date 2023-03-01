@@ -34,14 +34,28 @@ var swiper = new Swiper(".slide-content", {
 let carrito = [];
 let productos = [];
 
+const cargarProductos = async () => {
+  const response = await fetch("productos.json");
+  const data = await response.json();
+  for (let producto of data) {
+    let productoNuevo = new Producto(
+      producto.id,
+      producto.nombre,
+      producto.precio,
+      producto.imagen
+    );
+    productos.push(productoNuevo);
+  }
+};
+
 /* Productos */
 
-productos.push(new Producto("0", "Blusa", 30000, "./imagenes/Camiseta1.jpeg"));
+/* productos.push(new Producto("0", "Blusa", 30000, "./imagenes/Camiseta1.jpeg"));
 productos.push(new Producto("1", "Blusa", 50000, "./imagenes/Camiseta2.jpeg"));
 productos.push(new Producto("2", "Blusa", 30000, "./imagenes/Camiseta3.jpeg"));
 productos.push(
   new Producto("3", "Pantalón", 60000, "./imagenes/Pantalon.jpeg")
-);
+); */
 
 /* Elementos Traidos del DOM */
 
@@ -62,7 +76,8 @@ setTimeout(() => {
 
 /* Escuchadores (eventos) */
 
-/* window.addEventListener("load", loadProductos); */
+window.addEventListener("load", cargarProductos);
+
 modalBody.addEventListener("click", agregarAlCarrito(carrito));
 botonFinalizarCompra.addEventListener("click", () => {
   finalizarCompra(carrito);
